@@ -7,8 +7,8 @@
     <ProjectGuid>{FE6D88EA-3ED1-4CAC-B05F-AF6479D315AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Application</RootNamespace>
-    <AssemblyName>Application</AssemblyName>
+    <RootNamespace>ExamenSGS.Application</RootNamespace>
+    <AssemblyName>ExamenSGS.Application</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,8 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AverageNumbers\Commands\CalculateAverage\CalculateAverageCommand.cs" />
+    <Compile Include="AverageNumbers\Queries\CalculateAverageQuery\CalculateAverageQuery.cs" />
+    <Compile Include="AddYears\Commands\CalculateYears\CalculateYearsCommand.cs" />
+    <Compile Include="AddYears\Queries\CalculateYearFuture\CalculateYearFuture.cs" />
+    <Compile Include="Interfaces\IQuery.cs" />
+    <Compile Include="Interfaces\IRequestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{458a3c0a-fe97-489a-9f04-a506b32b7151}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
