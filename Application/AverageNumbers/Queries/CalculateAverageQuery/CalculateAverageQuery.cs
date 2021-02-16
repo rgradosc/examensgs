@@ -7,30 +7,20 @@ namespace ExamenSGS.Application.AverageNumbers.Queries.CalculateAverageQuery
 {
     public class CalculateAverageQuery : IQuery<Average>
     {
-        public string CalculateSum(Average values)
-        {
-            int start = values.Start;
-            int end = values.End;
-            int result = 0;
-
-            var listOfNumbers = AddInList(start, end);
-
-            result = Average(listOfNumbers);
-
-            return result.ToString();
-        }
-
         public async Task<string> Calculate(Average numbers)
         {
             return await Task.Run(() =>
             {
                 int start = numbers.Start;
                 int end = numbers.End;
-                int result = 0;
+                double result = 0;
 
                 var listOfNumbers = AddInList(start, end);
 
-                result = Average(listOfNumbers);
+                if (listOfNumbers.Count > 0)
+                {
+                    result = Average(listOfNumbers);
+                }
 
                 return result.ToString();
             });
@@ -47,15 +37,15 @@ namespace ExamenSGS.Application.AverageNumbers.Queries.CalculateAverageQuery
             return numbers;
         }
 
-        private int Average(List<int> numbers)
+        private double Average(List<int> numbers)
         {
-            int result = 0;
+            double result = 0;
             foreach (int number in numbers)
             {
                 result = result + number;
             }
 
-            var divisor = numbers.Count;
+            double divisor = numbers.Count;
 
             return (result/divisor);
         }
