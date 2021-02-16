@@ -18,20 +18,20 @@ namespace WebAPI.Controllers
             handlerSum = new CalculateAverageCommandHandler();
         }
         
-        [HttpGet]
+        [HttpPost]
         [Route("api/calcular")]
         public async Task<string> GetYear([FromBody] CalculateYearsCommand command)
         {
             return await handlerYear.Handler(command);
         }
         
-        [HttpGet]
+        [HttpPost]
         [Route("api/promediar")]
-        public async Task<int> GetSum([FromBody] CalculateAverageCommand command)
+        public async Task<double> GetSum([FromBody] CalculateAverageCommand command)
         {
             var result  = await handlerSum.Handler(command);
 
-            return Convert.ToInt32(result);
+            return Convert.ToDouble(result);
         } 
     }
 }
